@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- SaliSurf-X mark: the survey parcel above, the subsurface signal below.
+         v1.5.0 refresh: the signal chevrons now carry the brand's molten-gold gradient
+         (Gold200 → Gold500) so the launcher reads as part of the same design system as
+         the in-app Material 3 palette. Adaptive-icon safe zone is the central 72dp. -->
+
+    <!-- Survey parcel: a soft translucent plate of land -->
+    <path
+        android:fillColor="#2EFFFFFF"
+        android:pathData="M54,30 L78,42 L74,68 L40,73 L31,47 Z" />
+
+    <!-- Parcel outline -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.6"
+        android:strokeLineJoin="round"
+        android:pathData="M54,30 L78,42 L74,68 L40,73 L31,47 Z" />
+
+    <!-- Vertex markers in brand gold -->
+    <path android:fillColor="#F5C542" android:pathData="M54,26.6 A3.4,3.4 0 1,1 54,33.4 A3.4,3.4 0 1,1 54,26.6 Z" />
+    <path android:fillColor="#F5C542" android:pathData="M78,38.6 A3.4,3.4 0 1,1 78,45.4 A3.4,3.4 0 1,1 78,38.6 Z" />
+    <path android:fillColor="#F5C542" android:pathData="M74,64.6 A3.4,3.4 0 1,1 74,71.4 A3.4,3.4 0 1,1 74,64.6 Z" />
+    <path android:fillColor="#F5C542" android:pathData="M40,69.6 A3.4,3.4 0 1,1 40,76.4 A3.4,3.4 0 1,1 40,69.6 Z" />
+    <path android:fillColor="#F5C542" android:pathData="M31,43.6 A3.4,3.4 0 1,1 31,50.4 A3.4,3.4 0 1,1 31,43.6 Z" />
+
+    <!-- Subsurface signal: two gold chevrons beneath the parcel -->
+    <path android:pathData="M36,80 L54,90 L72,80 L72,84.5 L54,94.5 L36,84.5 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="36"
+                android:startY="80"
+                android:endX="72"
+                android:endY="94.5"
+                android:type="linear">
+                <item android:offset="0" android:color="#FFFFDB7A" />
+                <item android:offset="1" android:color="#FFC08A10" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M42,88.5 L54,95 L66,88.5 L66,91.5 L54,98 L42,91.5 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="42"
+                android:startY="88.5"
+                android:endX="66"
+                android:endY="98"
+                android:type="linear">
+                <item android:offset="0" android:color="#FFC08A10" />
+                <item android:offset="1" android:color="#FF7C5507" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

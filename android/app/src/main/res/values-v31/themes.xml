@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      API 31+ variant: full copy of the v27 theme plus the Android 12+ system splash
+      screen — the obsidian brand background with the SaliSurf-X adaptive icon. This
+      makes the very first frame (system splash) and the window background below it
+      visually continuous, with no white flash in between.
+    -->
+    <style name="Theme.Subsurf" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowSplashScreenBackground">@color/splash_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+    </style>
+</resources>

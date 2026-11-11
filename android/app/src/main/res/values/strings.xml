@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SaliSurf-X</string>
+
+    <!-- Exploration flow (globe → lock → trace → collect) -->
+    <string name="map_globe">Back to globe</string>
+    <string name="map_recenter">Recenter</string>
+    <string name="map_zoom_in">Zoom in</string>
+    <string name="map_zoom_out">Zoom out</string>
+    <string name="map_loading">Loading map</string>
+    <string name="map_load_failed">The basemap could not be loaded. Check your connection and retry.</string>
+    <string name="action_lock">Lock</string>
+    <string name="action_unlock">Unlock</string>
+    <string name="action_start_run">Collect data for this area</string>
+    <string name="hint_explore">Fly to your area, then tap Lock to start tracing it</string>
+    <string name="hint_pan_zoom">Drag to pan · pinch to zoom</string>
+    <string name="hint_trace_first">Camera locked — tap the map to place the first corner</string>
+    <string name="hint_trace_more">Keep tapping to close the boundary (3–10 points)</string>
+    <string name="hint_locked_ready">Boundary ready — start the data collection run</string>
+    <string name="sheet_title_empty">Explore the globe</string>
+    <string name="sheet_title_tracing">Tracing boundary</string>
+    <string name="sheet_title_locked">Area locked</string>
+    <string name="sheet_sub_explore">Pan and zoom freely, like a maps app</string>
+    <string name="sheet_sub_tracing">Each tap adds a corner of the dashed boundary</string>
+    <string name="collect_title">Collecting data for your area</string>
+    <string name="collect_sub">Region validated with %1$d corners — pulling satellite catalog and terrain products</string>
+    <string name="collect_step_validate">Region geometry validated</string>
+    <string name="collect_step_catalog">Fetching Sentinel-2 L2A catalog</string>
+    <string name="collect_step_terrain">Preparing open DEM terrain indicators</string>
+
+    <!-- Bottom navigation -->
+    <string name="tab_map">Map</string>
+    <string name="tab_results">Results</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Map screen -->
+    <string name="map_title">Survey region</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_clear">Clear</string>
+    <string name="analyzing_short">Analyzing</string>
+    <string name="need_three_vertices">Add at least 3 vertices first</string>
+    <string name="max_vertices">Maximum is 10 vertices</string>
+    <string name="offline_valid_bad">Local check: region is invalid</string>
+    <string name="map_fit">Fit region</string>
+    <string name="metric_area">Area</string>
+    <string name="metric_perimeter">Perimeter</string>
+    <string name="metric_vertices">Vertices</string>
+
+    <!-- Results screen -->
+    <string name="results_title">Analysis results</string>
+    <string name="results_subtitle">Surface observations with full provenance</string>
+    <string name="results_empty">Sketch a region on the Map tab and press Analyze.</string>
+    <string name="results_empty_title">No analysis yet</string>
+    <string name="results_empty_action">Open the map</string>
+    <string name="hero_summary_full">Region validated, satellite catalog and terrain indicators ready</string>
+    <string name="hero_summary_partial">Region validated — compute terrain indicators below</string>
+    <string name="validation_card">Region validation</string>
+    <string name="valid_region">Region is valid</string>
+    <string name="invalid_region">Region is invalid</string>
+    <string name="issues_title">Issues</string>
+    <string name="perimeter_format">%1$s m</string>
+    <string name="catalog_card">Sentinel-2 products (L2A)</string>
+    <string name="no_products">No products match the current filters.</string>
+    <string name="total_matched_format">Total in catalog: %1$d</string>
+    <string name="cloud_cover_short">%1$s%% cloud</string>
+    <string name="size_format">%1$s MB</string>
+    <string name="terrain_card">Terrain indicators</string>
+    <string name="terrain_intro">Open global DEM — elevation, slope, roughness and gradient consistency computed inside your region.</string>
+    <string name="dem_tag">Open DEM</string>
+    <string name="compute_terrain">Compute terrain indicators</string>
+    <string name="computing">Computing…</string>
+    <string name="elevation_format">%1$s – %2$s m</string>
+    <string name="elevation_range_label">Elevation range</string>
+    <string name="slope_max_label">Maximum slope</string>
+    <string name="metric_mean_elevation">Mean elevation</string>
+    <string name="metric_mean_slope">Mean slope</string>
+    <string name="metric_roughness">Roughness (TRI)</string>
+    <string name="resolution_format">~%1$s m/px</string>
+    <string name="dem_resolution_label">DEM resolution</string>
+    <string name="tiles_label">DEM tiles fetched</string>
+    <string name="gradient_label">Gradient orientation</string>
+    <string name="unit_metre">m</string>
+    <string name="unit_hectare">ha</string>
+    <string name="unit_degree">°</string>
+    <string name="score_title">Surface anomaly score</string>
+    <string name="score_out_of">/ 1.00</string>
+    <string name="score_level_low">Low</string>
+    <string name="score_level_moderate">Moderate</string>
+    <string name="score_level_high">High</string>
+    <string name="score_components">Score components</string>
+    <string name="score_explainer">A weighted mix of documented surface-shape components. It describes terrain shape only — it is not a probability of a buried target.</string>
+    <string name="component_slope_variability">Slope variability</string>
+    <string name="component_roughness">Roughness</string>
+    <string name="component_gradient_consistency">Gradient consistency</string>
+    <string name="component_relief">Relief</string>
+    <string name="provenance_title">Data provenance</string>
+    <string name="caveats_title">Scientific caveats</string>
+    <string name="warnings_title">Warnings</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_subtitle">Connection, appearance and data sources</string>
+    <string name="settings_api_url">Backend API base URL</string>
+    <string name="settings_api_url_help">Point the app at your SaliSurf-X backend. Must start with http:// or https:// and end with /.</string>
+    <string name="settings_api_url_hint">http://192.168.1.20:8000/</string>
+    <string name="settings_save">Save</string>
+    <string name="settings_test">Test</string>
+    <string name="settings_testing">Testing…</string>
+    <string name="settings_test_ok">Connected — backend v%1$s</string>
+    <string name="settings_test_fail_detail">Connection failed — %1$s</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_theme_desc">Pick a fixed palette or follow the device setting.</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_desc">Uses the device language: English or فارسی.</string>
+    <string name="settings_data_title">Data &amp; method</string>
+    <string name="settings_source_s2">Sentinel-2 L2A catalog</string>
+    <string name="settings_source_s2_desc">Copernicus Data Space Ecosystem — metadata search only.</string>
+    <string name="settings_source_dem">Open DEM terrain tiles</string>
+    <string name="settings_source_dem_desc">AWS Terrain Tiles (Terrarium) — public, no account.</string>
+    <string name="settings_version">Version %1$s</string>
+    <string name="settings_licence">Map data © OpenStreetMap contributors · OpenFreeMap · Copernicus. Provided “as is”, without warranty of any kind.</string>
+    <string name="status_online">Online</string>
+    <string name="settings_about">SaliSurf-X collects surface observations (Sentinel-2 metadata, open DEM terrain indicators) with full provenance. It is not a subsurface scanner and never claims buried-target detections.</string>
+    <string name="url_invalid">Enter a valid URL ending with /</string>
+
+    <!-- Brand / credits -->
+    <string name="brand_tagline">Surface intelligence · subsurface intuition</string>
+    <string name="brand_designer_credit">Brand artwork &amp; signature by Salar Farzaneh</string>
+    <string name="brand_mother_logo_alt">SaliSurf-X mother logo — silicon meets earth</string>
+    <string name="brand_wordmark_alt">SaliSurf-X wordmark</string>
+    <string name="brand_chip_alt">Neural-network core — the SaliSurf-X signal</string>
+
+    <!-- Common -->
+    <string name="error_format">Error: %1$s</string>
+    <string name="disclaimer_title">Surface indicators only</string>
+    <string name="disclaimer">Surface indicators only — not evidence of buried targets.</string>
+    <!-- Operational states -->
+    <string name="error_no_host">Server not found (%1$s). Check the API address in Settings.</string>
+    <string name="error_timeout">The server took too long to answer. Try again, or check the API address.</string>
+    <string name="error_unreachable">Cannot reach the server. Is the backend running and on the same network?</string>
+    <string name="error_network">Network problem — check your connection and the API address.</string>
+    <string name="run_failed_title">Collection failed</string>
+    <string name="action_retry">Try again</string>
+    <string name="action_dismiss">Dismiss</string>
+    <string name="action_share_report">Share report</string>
+    <string name="action_copy_report">Copy summary</string>
+    <string name="report_copied">Report summary copied</string>
+    <string name="report_share_title">SaliSurf-X report</string>
+    <string name="report_no_products">no products in the current window</string>
+    <string name="offline_banner_title">Backend not reachable</string>
+    <string name="offline_banner_body">Without a reachable backend only the map and the local geometry check are available. Set the API address in Settings.</string>
+    <string name="action_open_settings">Open settings</string>
+    <string name="run_area_label">Locked area</string>
+    <string name="status_offline">Offline</string>
+    <string name="status_checking">Checking…</string>
+    <string name="exit_title">Leave SaliSurf-X?</string>
+    <string name="exit_body">Your sketch and the collected data are kept until you clear them.</string>
+    <string name="action_exit">Leave</string>
+    <string name="action_stay">Stay</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      API 27+ variant. windowLightNavigationBar and windowLayoutInDisplayCutoutMode do not
+      exist on API 26, so they live here instead of the base theme (lint NewApi).
+    -->
+    <style name="Theme.Subsurf" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>

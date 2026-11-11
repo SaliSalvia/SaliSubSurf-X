@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SaliSurf-X</string>
+
+    <!-- جریان کاوش (کره → قفل → مرزبندی → جمع‌آوری) -->
+    <string name="map_globe">بازگشت به کره زمین</string>
+    <string name="map_recenter">واسطه‌یابی</string>
+    <string name="map_zoom_in">بزرگ‌نمایی</string>
+    <string name="map_zoom_out">کوچک‌نمایی</string>
+    <string name="map_loading">در حال بارگذاری نقشه</string>
+    <string name="map_load_failed">نقشه پشتیبان بارگذاری نشد. اتصال اینترنت را بررسی کنید و دوباره تلاش کنید.</string>
+    <string name="action_lock">قفل</string>
+    <string name="action_unlock">باز کردن قفل</string>
+    <string name="action_start_run">جمع‌آوری داده‌های این محدوده</string>
+    <string name="hint_explore">به محدودهٔ خود پرواز کنید، سپس «قفل» را بزنید تا مرزبندی آغاز شود</string>
+    <string name="hint_pan_zoom">برای جابه‌جایی بکشید · برای بزرگ‌نمایی دو انگشت بگذارید</string>
+    <string name="hint_trace_first">دوربین قفل شد — برای گذاشتن نخستین گوشه روی نقشه بزنید</string>
+    <string name="hint_trace_more">برای بستن مرز به زدن ادامه دهید (۳ تا ۱۰ نقطه)</string>
+    <string name="hint_locked_ready">مرز آماده است — جمع‌آوری داده را شروع کنید</string>
+    <string name="sheet_title_empty">کاوش کره زمین</string>
+    <string name="sheet_title_tracing">مرزبندی محدوده</string>
+    <string name="sheet_title_locked">محدوده قفل شد</string>
+    <string name="sheet_sub_explore">آزادانه جابه‌جا و بزرگ‌نمایی کنید، مانند یک اپ نقشه</string>
+    <string name="sheet_sub_tracing">هر ضربه یک گوشه از مرز نقطه‌چین را اضافه می‌کند</string>
+    <string name="collect_title">در حال جمع‌آوری داده‌های محدودهٔ شما</string>
+    <string name="collect_sub">محدوده با %1$d گوشه تأیید شد — کاتالوگ ماهواره و محصولات زمینی دریافت می‌شود</string>
+    <string name="collect_step_validate">هندسهٔ محدوده تأیید شد</string>
+    <string name="collect_step_catalog">دریافت کاتالوگ سنتینل-۲ L2A</string>
+    <string name="collect_step_terrain">آماده‌سازی شاخص‌های زمینی DEM آزاد</string>
+
+    <!-- نوار پایین -->
+    <string name="tab_map">نقشه</string>
+    <string name="tab_results">نتایج</string>
+    <string name="tab_settings">تنظیمات</string>
+
+    <!-- صفحه نقشه -->
+    <string name="map_title">محدوده پیمایش</string>
+    <string name="action_undo">برگرداندن</string>
+    <string name="action_clear">پاک کردن</string>
+    <string name="analyzing_short">تحلیل</string>
+    <string name="need_three_vertices">ابتدا حداقل ۳ رأس اضافه کنید</string>
+    <string name="max_vertices">حداکثر ۱۰ رأس مجاز است</string>
+    <string name="offline_valid_bad">بررسی محلی: محدوده نامعتبر است</string>
+    <string name="map_fit">جای‌گیری محدوده</string>
+    <string name="metric_area">مساحت</string>
+    <string name="metric_perimeter">محیط</string>
+    <string name="metric_vertices">رأس‌ها</string>
+
+    <!-- صفحه نتایج -->
+    <string name="results_title">نتایج تحلیل</string>
+    <string name="results_subtitle">مشاهدات سطحی همراه با خاستگاه کامل داده‌ها</string>
+    <string name="results_empty">در زبانهٔ نقشه یک محدوده رسم کنید و «تحلیل» را بزنید.</string>
+    <string name="results_empty_title">هنوز تحلیلی انجام نشده</string>
+    <string name="results_empty_action">رفتن به نقشه</string>
+    <string name="hero_summary_full">محدوده تأیید شد؛ کاتالوگ ماهواره و شاخص‌های زمینی آماده است</string>
+    <string name="hero_summary_partial">محدوده تأیید شد — شاخص‌های زمینی را در پایین محاسبه کنید</string>
+    <string name="validation_card">اعتبارسنجی محدوده</string>
+    <string name="valid_region">محدوده معتبر است</string>
+    <string name="invalid_region">محدوده نامعتبر است</string>
+    <string name="issues_title">اشکال‌ها</string>
+    <string name="perimeter_format">%1$s متر</string>
+    <string name="catalog_card">محصولات سنتینل-۲ (L2A)</string>
+    <string name="no_products">هیچ محصولی با پالایه‌های کنونی همخوان نیست.</string>
+    <string name="total_matched_format">مجموع در کاتالوگ: %1$d</string>
+    <string name="cloud_cover_short">ابر %1$s٪</string>
+    <string name="size_format">%1$s مگابایت</string>
+    <string name="terrain_card">شاخص‌های زمینی</string>
+    <string name="terrain_intro">مدل ارتفاعی آزاد — ارتفاع، شیب، زبری و انسجام جهت شیب درون محدودهٔ شما محاسبه می‌شود.</string>
+    <string name="dem_tag">DEM آزاد</string>
+    <string name="compute_terrain">محاسبه شاخص‌های زمینی</string>
+    <string name="computing">در حال محاسبه…</string>
+    <string name="elevation_format">%1$s تا %2$s متر</string>
+    <string name="elevation_range_label">دامنهٔ ارتفاع</string>
+    <string name="slope_max_label">بیشینهٔ شیب</string>
+    <string name="metric_mean_elevation">میانگین ارتفاع</string>
+    <string name="metric_mean_slope">میانگین شیب</string>
+    <string name="metric_roughness">زبری (TRI)</string>
+    <string name="resolution_format">حدود %1$s متر/پیکسل</string>
+    <string name="dem_resolution_label">وضوح DEM</string>
+    <string name="tiles_label">کاشی‌های DEM دریافت‌شده</string>
+    <string name="gradient_label">جهت شیب</string>
+    <string name="unit_metre">متر</string>
+    <string name="unit_hectare">هکتار</string>
+    <string name="unit_degree">درجه</string>
+    <string name="score_title">نمرهٔ ناهنجاری سطح</string>
+    <string name="score_out_of">از ۱٫۰۰</string>
+    <string name="score_level_low">کم</string>
+    <string name="score_level_moderate">متوسط</string>
+    <string name="score_level_high">زیاد</string>
+    <string name="score_components">اجزای نمره</string>
+    <string name="score_explainer">ترکیبی وزن‌دار از اجزای مستندِ شکل سطح. این نمره تنها شکل زمین را توصیف می‌کند و احتمال وجود هدف دفن‌شده نیست.</string>
+    <string name="component_slope_variability">پراکندگی شیب</string>
+    <string name="component_roughness">زبری</string>
+    <string name="component_gradient_consistency">انسجام جهت شیب</string>
+    <string name="component_relief">اختلاف ارتفاع</string>
+    <string name="provenance_title">خاستگاه داده‌ها</string>
+    <string name="caveats_title">تذکرهای علمی</string>
+    <string name="warnings_title">هشدارها</string>
+
+    <!-- صفحه تنظیمات -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_subtitle">اتصال، ظاهر و منابع داده</string>
+    <string name="settings_api_url">آدرس پایه API سرور</string>
+    <string name="settings_api_url_help">برنامه را به سرور خودتان وصل کنید. نشانی باید با http:// یا https:// شروع و با / تمام شود.</string>
+    <string name="settings_api_url_hint">http://192.168.1.20:8000/</string>
+    <string name="settings_save">ذخیره</string>
+    <string name="settings_test">تست</string>
+    <string name="settings_testing">در حال تست…</string>
+    <string name="settings_test_ok">متصل شد — نسخه سرور %1$s</string>
+    <string name="settings_test_fail_detail">اتصال برقرار نشد — %1$s</string>
+    <string name="settings_appearance">ظاهر برنامه</string>
+    <string name="settings_theme_title">تم</string>
+    <string name="settings_theme_desc">یک پالت ثابت انتخاب کنید یا از تنظیم دستگاه پیروی کنید.</string>
+    <string name="settings_theme_system">سیستم</string>
+    <string name="settings_theme_light">روشن</string>
+    <string name="settings_theme_dark">تاریک</string>
+    <string name="settings_language_title">زبان</string>
+    <string name="settings_language_desc">از زبان دستگاه استفاده می‌کند: فارسی یا English.</string>
+    <string name="settings_data_title">داده و روش</string>
+    <string name="settings_source_s2">کاتالوگ سنتینل-۲ L2A</string>
+    <string name="settings_source_s2_desc">Copernicus Data Space — فقط جست‌وجوی فراداده.</string>
+    <string name="settings_source_dem">کاشی‌های زمینی DEM آزاد</string>
+    <string name="settings_source_dem_desc">AWS Terrain Tiles (Terrarium) — عمومی و بدون حساب کاربری.</string>
+    <string name="settings_version">نسخهٔ %1$s</string>
+    <string name="settings_licence">داده‌های نقشه © مشارکت‌کنندگان OpenStreetMap · OpenFreeMap · Copernicus. بدون هیچ‌گونه ضمانت، «همان‌طور که هست» ارائه می‌شود.</string>
+    <string name="status_online">آنلاین</string>
+    <string name="settings_about">SaliSurf-X مشاهدات سطحی (فراداده سنتینل-۲ و شاخص‌های زمینی DEM آزاد) را همراه با خاستگاه کامل ثبت می‌کند. این برنامه اسکنر زیرسطحی نیست و هرگز ادعای تشخیص هدف دفن‌شده نمی‌کند.</string>
+    <string name="url_invalid">یک نشانی معتبر که با / تمام شود وارد کنید</string>
+
+    <!-- Brand / credits -->
+    <string name="brand_tagline">هوشمندی سطح · شهود زیرسطحی</string>
+    <string name="brand_designer_credit">اثر هنری و امضای برند از Salar Farzaneh</string>
+    <string name="brand_mother_logo_alt">لوگوی مادر SaliSurf-X — سیلیکون به زمین می‌پیوندد</string>
+    <string name="brand_wordmark_alt">نشانِ SaliSurf-X</string>
+    <string name="brand_chip_alt">هستهٔ شبکهٔ عصبی — سیگنال SaliSurf-X</string>
+
+    <!-- عمومی -->
+    <string name="error_format">خطا: %1$s</string>
+    <string name="disclaimer_title">فقط شاخص‌های سطحی</string>
+    <string name="disclaimer">فقط شاخص‌های سطحی — نه مدرکی برای اهداف دفن‌شده.</string>
+    <!-- وضعیت‌های عملیاتی -->
+    <string name="error_no_host">سرور پیدا نشد (%1$s). نشانی API را در تنظیمات بررسی کنید.</string>
+    <string name="error_timeout">پاسخ سرور بیش از حد طول کشید. دوباره تلاش کنید یا نشانی API را بررسی کنید.</string>
+    <string name="error_unreachable">دسترسی به سرور ممکن نیست. آیا بک‌اند در حال اجرا و روی همان شبکه است؟</string>
+    <string name="error_network">مشکل شبکه — اتصال خود و نشانی API را بررسی کنید.</string>
+    <string name="run_failed_title">جمع‌آوری ناموفق بود</string>
+    <string name="action_retry">تلاش دوباره</string>
+    <string name="action_dismiss">بستن</string>
+    <string name="action_share_report">اشتراک گزارش</string>
+    <string name="action_copy_report">کپی خلاصه</string>
+    <string name="report_copied">خلاصهٔ گزارش کپی شد</string>
+    <string name="report_share_title">گزارش SaliSurf-X</string>
+    <string name="report_no_products">در بازهٔ کنونی محصولی نیست</string>
+    <string name="offline_banner_title">بک‌اند در دسترس نیست</string>
+    <string name="offline_banner_body">بدون بک‌اندِ در دسترس فقط نقشه و بررسی محلی هندسه کار می‌کند. نشانی API را در تنظیمات وارد کنید.</string>
+    <string name="action_open_settings">رفتن به تنظیمات</string>
+    <string name="run_area_label">محدودهٔ قفل‌شده</string>
+    <string name="status_offline">آفلاین</string>
+    <string name="status_checking">در حال بررسی…</string>
+    <string name="exit_title">از SaliSurf-X خارج می‌شوید؟</string>
+    <string name="exit_body">طرح شما و داده‌های جمع‌آوری‌شده تا زمانی که پاکشان نکنید باقی می‌مانند.</string>
+    <string name="action_exit">خروج</string>
+    <string name="action_stay">بمان</string>
+</resources>

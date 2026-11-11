@@ -1,0 +1,31 @@
+# ---- Android / Gradle ----
+*.iml
+.gradle/
+**/build/
+/local.properties
+.idea/
+.DS_Store
+/captures
+.externalNativeBuild
+.cxx
+
+# ---- Signing material: NEVER commit ----
+*.keystore
+*.jks
+*.b64
+keystore*.txt
+
+# ---- Python / backend ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ---- Editors / OS ----
+*.swp
+*~
+.vscode/

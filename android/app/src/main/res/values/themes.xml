@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      One theme for the whole app. The window background is an animated-layer brand tile, so the
+      launch feels deliberate instead of showing a blank white frame, and the status/navigation
+      bars stay transparent for the edge-to-edge Compose surface.
+    -->
+    <style name="Theme.Subsurf" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>
