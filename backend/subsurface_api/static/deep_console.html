@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SaliSurf-X — کنسول پردازش عمیق</title>
+<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet"/>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --line:#30363d; --txt:#e6edf3; --dim:#8b949e; --acc:#e05d3d; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Vazirmatn",Tahoma,sans-serif; background:var(--bg); color:var(--txt); }
+  header { padding:12px 16px; border-bottom:1px solid var(--line); display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; }
+  header h1 { font-size:16px; margin:0; }
+  header code { color:var(--dim); font-size:12px; }
+  #layout { display:grid; grid-template-columns: 340px 1fr; height: calc(100vh - 53px); }
+  @media (max-width: 800px){ #layout{ grid-template-columns:1fr; grid-template-rows: 320px 1fr; } }
+  #form { padding:14px; overflow:auto; border-inline-end:1px solid var(--line); }
+  label { display:block; font-size:12px; color:var(--dim); margin:10px 0 4px; }
+  input, select { width:100%; padding:7px 9px; background:#0b0f14; color:var(--txt); border:1px solid var(--line); border-radius:8px; font:inherit; font-size:13px; }
+  .row { display:flex; gap:8px; } .row > div { flex:1; }
+  button { margin-top:14px; width:100%; padding:10px; background:var(--acc); color:#fff; border:0; border-radius:10px; font:inherit; font-weight:700; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  #map { width:100%; height:100%; }
+  #status { margin-top:12px; font-size:13px; line-height:1.7; white-space:pre-wrap; }
+  .bar { height:8px; background:#0b0f14; border:1px solid var(--line); border-radius:6px; overflow:hidden; margin-top:6px; }
+  .bar > i { display:block; height:100%; width:0%; background:linear-gradient(90deg,#e05d3d,#f0a35e); transition:width .4s; }
+  #results { margin-top:12px; display:none; }
+  #results img { width:100%; border:1px solid var(--line); border-radius:10px; margin-top:8px; }
+  #results a { color:#58a6ff; font-size:12px; display:block; margin-top:4px; text-decoration:none; }
+  .hint { font-size:11px; color:var(--dim); margin-top:6px; line-height:1.8; }
+  .k { color:var(--acc); }
+</style>
+</head>
+<body>
+<header>
+  <h1>⚡ کنسول پردازش عمیق — SaliSurf-X</h1>
+  <code id="ver"></code>
+</header>
+<div id="layout">
+  <div id="form">
+    <label>آدرس بک‌اند (همین سرور)</label>
+    <input id="api" placeholder="https://…/"/>
+    <div class="row">
+      <div><label>از تاریخ (UTC)</label><input id="dfrom" type="date"/></div>
+      <div><label>تا تاریخ (UTC)</label><input id="dto" type="date"/></div>
+    </div>
+    <div class="row">
+      <div><label>حداکثر ابر ٪</label><input id="cloud" type="number" value="20" min="0" max="100"/></div>
+      <div><label>حداکثر صحنه</label><input id="mdates" type="number" value="14" min="4" max="24"/></div>
+    </div>
+    <div class="row">
+      <div><label>شبکه (px)</label>
+        <select id="grid"><option>128</option><option>256</option><option selected>512</option></select>
+      </div>
+      <div><label>مدل ناهنجاری</label>
+        <select id="model"><option value="pca" selected>PCA (سریع)</option><option value="autoencoder">Autoencoder</option></select>
+      </div>
+    </div>
+    <div class="row">
+      <div><label>آمارهٔ ادغام</label>
+        <select id="fusion">
+          <option value="cpf" selected>CPF (کالیبره — پیشنهادی)</option>
+          <option value="legacy">قدیمی (امتیاز وزنی)</option>
+        </select>
+      </div>
+      <div><label>رزولوشن بومی (متر)</label>
+        <select id="res">
+          <option value="" selected>خیر — شبکهٔ px بالا</option>
+          <option value="10">۱۰ (S2 بومی، حداکثر ~۲۰×۲۰ km)</option>
+          <option value="20">۲۰ (مناطق بزرگ‌تر)</option>
+          <option value="50">۵۰</option>
+        </select>
+      </div>
+    </div>
+    <label>حالت</label>
+    <select id="mode">
+      <option value="live" selected>زنده (Sentinel-2 واقعی — نیازمند حساب Copernicus)</option>
+      <option value="selftest">خودآزمایی (داده مصنوعی، بدون نیاز به حساب)</option>
+    </select>
+    <div class="hint">روی نقشه <span class="k">دو کلیک</span> بزنید: گوشهٔ اول و گوشهٔ مقابل مستطیل منطقه. کلید API (اگر تنظیم شده) در تنظیمات سرور: هدر <code>X-API-Key</code>.</div>
+    <button id="go">شروع تحلیل عمیق</button>
+    <div id="status">آماده.</div>
+    <div class="bar"><i id="bar"></i></div>
+    <div id="results">
+      <label>نقشهٔ امتیاز ناهنجاری (۰–۱۰۰)</label>
+      <img id="imgScore" alt="score"/>
+      <label>ترکیب رنگی + پوشش ناهنجاری</label>
+      <img id="imgOverlay" alt="overlay"/>
+      <a id="lnkGeo" target="_blank">detections.geojson</a>
+      <a id="lnkReport" target="_blank">report.json</a>
+      <a id="lnkTif" target="_blank">score.tif (GeoTIFF برای QGIS)</a>
+    </div>
+  </div>
+  <div id="map"></div>
+</div>
+<script>
+const map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://demotiles.maplibre.org/style.json',
+  center: [54.3, 32.5], zoom: 4.2, attributionControl: false
+});
+map.addControl(new maplibregl.NavigationControl(), 'top-left');
+
+let click1 = null, rect = null;
+map.on('click', (e) => {
+  if (!click1) {
+    click1 = [e.lngLat.lng, e.lngLat.lat];
+    say(`گوشهٔ اول: ${fmt(click1)} — حالا گوشهٔ مقابل را کلیک کنید.`);
+  } else {
+    const c2 = [e.lngLat.lng, e.lngLat.lat];
+    const w = Math.min(click1[0], c2[0]), e2 = Math.max(click1[0], c2[0]);
+    const s = Math.min(click1[1], c2[1]), n = Math.max(click1[1], c2[1]);
+    if (rect) map.removeLayer('r'), map.removeSource('r');
+    map.addSource('r', {type:'geojson', data: bboxPoly(w,s,e2,n)});
+    map.addLayer({id:'r', type:'line', source:'r', paint:{'line-color':'#e05d3d','line-width':2}});
+    window.__bbox = [w,s,e2,n];
+    click1 = null;
+    say(`منطقه: ${window.__bbox.map(x=>x.toFixed(4)).join(', ')} ✓`);
+  }
+});
+function bboxPoly(w,s,e,n){
+  return {type:'Feature', properties:{}, geometry:{type:'Polygon', coordinates:[[[w,s],[e,s],[e,n],[w,n],[w,s]]]}};
+}
+function fmt(p){ return p.map(x=>x.toFixed(4)).join(', '); }
+function say(t){ document.getElementById('status').textContent = t; }
+function prog(p){ document.getElementById('bar').style.width = p + '%'; }
+
+const today = new Date().toISOString().slice(0,10);
+document.getElementById('dto').value = today;
+document.getElementById('dfrom').value = new Date(Date.now() - 180*86400e3).toISOString().slice(0,10);
+document.getElementById('api').value = location.origin;
+
+fetch((document.getElementById('api').value.replace(/\/$/,'')) + '/api/v1/health')
+  .then(r=>r.json()).then(h=>{ document.getElementById('ver').textContent = 'API ' + h.version + ' — ' + h.status; })
+  .catch(()=>{ document.getElementById('ver').textContent = 'API در دسترس نیست'; });
+
+function polygonFromBbox(b){
+  const [w,s,e,n] = b, pad = 0.0;
+  return [[w+pad,s+pad],[e-pad,s+pad],[e-pad,n-pad],[w+pad,n-pad]];
+}
+
+document.getElementById('go').onclick = async () => {
+  const api = document.getElementById('api').value.replace(/\/+$/,'');
+  const bbox = window.__bbox;
+  if (!bbox) { say('اول روی نقشه دو کلیک بزنید تا منطقه انتخاب شود.'); return; }
+  const body = {
+    polygon: polygonFromBbox(bbox),
+    date_from: document.getElementById('dfrom').value,
+    date_to: document.getElementById('dto').value,
+    grid: +document.getElementById('grid').value,
+    model: document.getElementById('model').value,
+    mode: document.getElementById('mode').value,
+    max_cloud_percent: +document.getElementById('cloud').value,
+    max_dates: +document.getElementById('mdates').value,
+    fusion_mode: document.getElementById('fusion').value,
+    resolution_m: document.getElementById('res').value ? +document.getElementById('res').value : null
+  };
+  document.getElementById('results').style.display = 'none';
+  prog(2); say('ارسال درخواست…');
+  let res;
+  try {
+    res = await fetch(api + '/api/v1/deep/analyze', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
+    });
+  } catch (e) { say('خطای شبکه: ' + e); return; }
+  const acc = await res.json();
+  if (!res.ok) { say('خطا: ' + JSON.stringify(acc.detail || acc)); prog(0); return; }
+  const id = acc.job_id;
+  say('صف انجام شد: ' + id);
+  const poll = setInterval(async () => {
+    const st = await (await fetch(`${api}/api/v1/deep/jobs/${id}`)).json();
+    prog(st.progress); say(`[${st.status}] ${st.progress}٪ — ${st.stage}`);
+    if (st.status === 'error') { clearInterval(poll); say('خطا: ' + (st.error||'')); prog(0); return; }
+    if (st.status === 'done') {
+      clearInterval(poll);
+      const r = await (await fetch(`${api}/api/v1/deep/jobs/${id}/result`)).json();
+      const rep = r.report || {};
+      const extra = rep.synthetic ? ' | ⚠️ دادهٔ مصنوعی' : '';
+      const resTxt = rep.native_resolution ? ` | ${rep.cell_size_m}m بومی (${rep.tiles} کاشی)` : '';
+      say(`تمام ✓ صحنه‌ها: ${rep.scenes_accepted} | مؤلفه‌ها: ${rep.components_detected} | با اطمینان بالا/متوسط: ${rep.components_high_or_medium} | مدل: ${rep.model_used} | ادغام: ${rep.fusion_mode}${resTxt}${extra}`);
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('imgScore').src = `${api}/api/v1/deep/jobs/${id}/files/score_map.png`;
+      document.getElementById('imgOverlay').src = `${api}/api/v1/deep/jobs/${id}/files/overlay.png`;
+      document.getElementById('lnkGeo').href = `${api}/api/v1/deep/jobs/${id}/files/detections.geojson`;
+      document.getElementById('lnkReport').href = `${api}/api/v1/deep/jobs/${id}/files/report.json`;
+      document.getElementById('lnkTif').href = `${api}/api/v1/deep/jobs/${id}/files/score.tif`;
+      if (rep.bbox_wgs84) {
+        const [w,s,e,n] = rep.bbox_wgs84;
+        map.fitBounds([[w,s],[e,n]], {padding: 40, maxZoom: 13});
+      }
+    }
+  }, 2000);
+};
+</script>
+</body>
+</html>

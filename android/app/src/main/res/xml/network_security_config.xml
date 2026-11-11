@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This app talks to a *user-configured* self-hosted backend. The primary documented workflow
+  (README: "For a physical phone, set the API base URL to your computer's LAN address,
+  e.g. http://192.168.1.20:8000/") relies on plain HTTP, because a LAN host has no TLS
+  certificate.
+
+  Android's network security config cannot scope private IP ranges (domain entries are exact
+  hosts; there is no CIDR support), so the earlier attempt to whitelist only 10.0.2.2 /
+  localhost / 127.0.0.1 silently broke that workflow. Cleartext is therefore permitted in the
+  base config on purpose.
+
+  HTTPS is always allowed and preferred: backends deployed with TLS (VPS, Runflare, a reverse
+  proxy) work unchanged. To harden a deployment with a pinned host, add a
+  <domain-config cleartextTrafficPermitted="false"> block for it below.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

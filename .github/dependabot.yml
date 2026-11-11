@@ -1,0 +1,20 @@
+version: 2
+updates:
+  # open-pull-requests-limit: 0 -> Dependabot stops opening version-bump PRs
+  # (security alerts from the Security tab remain active).
+  # To re-enable, replace 0 with a number, e.g. 3.
+  - package-ecosystem: github-actions
+    directory: "/"
+    open-pull-requests-limit: 0
+    schedule:
+      interval: monthly
+  - package-ecosystem: gradle
+    directory: "/android"
+    open-pull-requests-limit: 0
+    schedule:
+      interval: monthly
+  - package-ecosystem: pip
+    directory: "/backend"
+    open-pull-requests-limit: 0
+    schedule:
+      interval: monthly

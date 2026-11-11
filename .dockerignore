@@ -1,0 +1,25 @@
+# Keep the Runflare/root image build context minimal: only the backend ships.
+# Everything else (Android app, CI, docs, local tooling) is irrelevant to the API.
+.git
+.github
+.github.bak
+github-workflow-backup
+android
+docs
+scripts
+tests
+**/__pycache__
+**/*.pyc
+.venv
+.env
+*.zip
+*.apk
+*.keystore
+local.properties
+.gradle
+.idea
+.vscode
+*.md
+!backend/README.md
+Dockerfile
+.dockerignore

@@ -1,0 +1,12 @@
+# Compatibility entry point for PaaS hosts (Runflare, Hugging Face Spaces, …)
+# and Docker builds that auto-install requirements.txt.
+#
+# The real dependency set is fully pinned (versions + SHA-256 hashes) in
+# requirements.lock. Do not edit that file by hand; regenerate both locks from
+# pyproject.toml whenever dependencies change:
+#
+#   uv pip compile pyproject.toml --universal --python-version 3.10 \
+#       --generate-hashes -o requirements.lock
+#   uv pip compile pyproject.toml --extra dev --universal --python-version 3.10 \
+#       --generate-hashes -o requirements-dev.lock
+-r requirements.lock
