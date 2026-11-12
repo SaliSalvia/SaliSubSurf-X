@@ -8,7 +8,6 @@ the corrected evalscript shape and the catalog-guided date selection.
 
 from __future__ import annotations
 
-import json as _json
 from typing import Any, Dict, List
 
 import pytest
