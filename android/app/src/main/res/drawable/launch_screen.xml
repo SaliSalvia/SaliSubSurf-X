@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Branded launch window: the app's obsidian background with the SaliSurf-X blue-chip
+  signal mark centred at 33 % of the shortest side, so the first frame of Compose lands
+  on the same visual as the cold-start splash. Density-bucketed PNGs in mipmap-/ keep
+  the chip crisp at every device resolution.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/splash_background" />
+    <item
+        android:width="132dp"
+        android:height="132dp"
+        android:gravity="center"
+        android:drawable="@mipmap/ic_splash_mark" />
+</layer-list>
